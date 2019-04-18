@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the startListening method from the FlutterShakePlugin class, for the Dart programming language.">
+  <title>startListening method - FlutterShakePlugin class - flutter_shake_plugin library - Dart API</title>
+  <!-- required because all the links are pseudo-absolute -->
+  <base href="../..">
+
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500,400i,400,300|Source+Sans+Pro:400,300,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="static-assets/github.css">
+  <link rel="stylesheet" href="static-assets/styles.css">
+  <link rel="icon" href="static-assets/favicon.png">
+  
+</head>
+
+<body>
+
+<div id="overlay-under-drawer"></div>
+
+<header id="title">
+  <button id="sidenav-left-toggle" type="button">&nbsp;</button>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="index.html">flutter_shake_plugin</a></li>
+    <li><a href="flutter_shake_plugin/flutter_shake_plugin-library.html">flutter_shake_plugin</a></li>
+    <li><a href="flutter_shake_plugin/FlutterShakePlugin-class.html">FlutterShakePlugin</a></li>
+    <li class="self-crumb">startListening method</li>
+  </ol>
+  <div class="self-name">startListening</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+
+<main>
+
+  <div id="dartdoc-sidebar-left" class="col-xs-6 col-sm-3 col-md-2 sidebar sidebar-offcanvas-left">
+    <header id="header-search-sidebar" class="hidden-l">
+      <form class="search-sidebar" role="search">
+        <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+      </form>
+    </header>
+    
+    <ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+      <li><a href="index.html">flutter_shake_plugin</a></li>
+      <li><a href="flutter_shake_plugin/flutter_shake_plugin-library.html">flutter_shake_plugin</a></li>
+      <li><a href="flutter_shake_plugin/FlutterShakePlugin-class.html">FlutterShakePlugin</a></li>
+      <li class="self-crumb">startListening method</li>
+    </ol>
+    
+    <h5>FlutterShakePlugin class</h5>
+    <ol>
+      <li class="section-title"><a href="flutter_shake_plugin/FlutterShakePlugin-class.html#constructors">Constructors</a></li>
+      <li><a href="flutter_shake_plugin/FlutterShakePlugin/FlutterShakePlugin.html">FlutterShakePlugin</a></li>
+    
+      <li class="section-title">
+        <a href="flutter_shake_plugin/FlutterShakePlugin-class.html#instance-properties">Properties</a>
+      </li>
+      <li><a href="flutter_shake_plugin/FlutterShakePlugin/onPhoneShaken.html">onPhoneShaken</a></li>
+      <li><a href="flutter_shake_plugin/FlutterShakePlugin/shakeThresholdGravity.html">shakeThresholdGravity</a></li>
+      <li><a href="flutter_shake_plugin/FlutterShakePlugin/shakeTimeMS.html">shakeTimeMS</a></li>
+      <li><a href="flutter_shake_plugin/FlutterShakePlugin/shouldVibrate.html">shouldVibrate</a></li>
+      <li><a href="flutter_shake_plugin/FlutterShakePlugin/streamSubscription.html">streamSubscription</a></li>
+      <li><a href="flutter_shake_plugin/FlutterShakePlugin/vibrateDuration.html">vibrateDuration</a></li>
+      <li class="inherited"><a href="dart-core/Object/hashCode.html">hashCode</a></li>
+      <li class="inherited"><a href="dart-core/Object/runtimeType.html">runtimeType</a></li>
+    
+      <li class="section-title"><a href="flutter_shake_plugin/FlutterShakePlugin-class.html#instance-methods">Methods</a></li>
+      <li><a href="flutter_shake_plugin/FlutterShakePlugin/startListening.html">startListening</a></li>
+      <li><a href="flutter_shake_plugin/FlutterShakePlugin/stopListening.html">stopListening</a></li>
+      <li class="inherited"><a href="dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
+      <li class="inherited"><a href="dart-core/Object/toString.html">toString</a></li>
+    
+      <li class="section-title inherited"><a href="flutter_shake_plugin/FlutterShakePlugin-class.html#operators">Operators</a></li>
+      <li class="inherited"><a href="dart-core/Object/operator_equals.html">operator ==</a></li>
+    
+    
+    
+    </ol>
+  </div><!--/.sidebar-offcanvas-->
+
+  <div id="dartdoc-main-content" class="col-xs-12 col-sm-9 col-md-8 main-content">
+      <div><h1>startListening method</h1></div>
+
+    <section class="multi-line-signature">
+      <span class="returntype">void</span>
+            <span class="name ">startListening</span>
+(<wbr>)
+      
+    </section>
+    <section class="desc markdown">
+      <p>Starts listening to accerelometer events</p>
+    </section>
+    
+    <section class="summary source-code" id="source">
+      <h2><span>Implementation</span></h2>
+      <pre class="language-dart"><code class="language-dart">void startListening() {
+  streamSubscription = accelerometerEvents.listen((AccelerometerEvent event) {
+    var now = DateTime.now().millisecondsSinceEpoch;
+    if ((now - _lastTime) &gt; shakeTimeMS) {
+      double x = event.x;
+      double y = event.y;
+      double z = event.z;
+      double acceleration = sqrt(x * x + y * y + z * z) - 9.8;
+      if (acceleration &gt; shakeThresholdGravity) {
+        if (shouldVibrate) Vibration.vibrate(duration: vibrateDuration);
+        _lastTime = now;
+        onPhoneShaken();
+      }
+    }
+  });
+}</code></pre>
+    </section>
+
+  </div> <!-- /.main-content -->
+
+  <div id="dartdoc-sidebar-right" class="col-xs-6 col-sm-6 col-md-2 sidebar sidebar-offcanvas-right">
+  </div><!--/.sidebar-offcanvas-->
+
+</main>
+
+<footer>
+  <span class="no-break">
+    flutter_shake_plugin 0.0.1
+  </span>
+
+  
+</footer>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="static-assets/typeahead.bundle.min.js"></script>
+<script src="static-assets/highlight.pack.js"></script>
+<script src="static-assets/URI.js"></script>
+<script src="static-assets/script.js"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Flutter Plugins" type="FlutterPluginsLibraryType">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$" />
+      <root url="file://C:/Android/flutter/.pub-cache/hosted/pub.flutter-io.cn/sensors-0.4.0+1" />
+      <root url="file://C:/Android/flutter/.pub-cache/hosted/pub.flutter-io.cn/vibration-1.0.2" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
