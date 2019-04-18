@@ -2,7 +2,7 @@ name: flutter_shake_plugin
 description: A new Flutter plugin.
 version: 0.0.1
 author: Damon<3262663349@qq.com>
-homepage: https://www.dongnaoedu.com
+homepage: https://github.com/ChallengeHe/FlutterShakePlugin
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
