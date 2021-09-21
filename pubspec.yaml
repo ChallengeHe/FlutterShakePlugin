@@ -1,15 +1,15 @@
 name: flutter_shake_plugin
 description: A new Flutter plugin.
-version: 0.0.1
+version: 0.0.2
 author: Damon<3262663349@qq.com>
 homepage: https://github.com/ChallengeHe/FlutterShakePlugin
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: '>=2.12.0 <3.0.0'
 
 dependencies:
-  vibration: ^1.0.2
-  sensors: ^0.4.0+1
+  vibration: ^1.7.4-nullsafety.0
+  sensors: ^2.0.3
   flutter:
     sdk: flutter
 

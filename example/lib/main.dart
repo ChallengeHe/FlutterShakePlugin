@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'dart:async';
 
-import 'package:flutter/services.dart';
 import 'package:flutter_shake_plugin/flutter_shake_plugin.dart';
 
 void main() => runApp(MyApp());
@@ -18,7 +16,7 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     super.initState();
     _shakePlugin = FlutterShakePlugin(
-      onPhoneShaken: (){
+      onPhoneShaken: () {
         //do stuff on phone shake
         print('phone shakes');
       },
