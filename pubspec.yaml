@@ -1,6 +1,6 @@
 name: flutter_shake_plugin
 description: A new Flutter plugin.
-version: 0.0.1
+version: 0.0.2
 author: Damon<3262663349@qq.com>
 homepage: https://github.com/ChallengeHe/FlutterShakePlugin
 
@@ -9,7 +9,7 @@ environment:
 
 dependencies:
   vibration: ^1.0.2
-  sensors: ^0.4.0+1
+  sensors: '>=0.4.0+1 <2.0.0'
   flutter:
     sdk: flutter
 
