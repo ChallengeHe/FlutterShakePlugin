@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:math';
 
-import 'package:meta/meta.dart';
 import 'package:sensors/sensors.dart';
 import 'package:vibration/vibration.dart';
 
@@ -28,16 +27,16 @@ class FlutterShakePlugin {
   final int vibrateDuration;
 
   /// StreamSubscription for Accelerometer events
-  StreamSubscription streamSubscription;
+  StreamSubscription? streamSubscription;
 
   /// This constructor waits until [startListening] is called
   FlutterShakePlugin({
-    @required this.onPhoneShaken,
+    required this.onPhoneShaken,
     this.shakeTimeMS = 500,
     this.shakeThresholdGravity = 3.25,
     this.shouldVibrate = true,
     this.vibrateDuration = 500,
-  }) : assert(onPhoneShaken != null);
+  });
 
   /// Starts listening to accerelometer events
   void startListening() {
